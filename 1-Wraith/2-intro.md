@@ -33,7 +33,7 @@ Step 3:
 ```
 domains:
     local: "http://localhost:8080"
-    production: "http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro"
+    production: "http://mpgilbertusa.github.io/Responsive-Starter-Kit"
 ```
 
 Step 4:
