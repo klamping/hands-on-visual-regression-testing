@@ -15,7 +15,7 @@ PhantomCSS offers an alternative. Instead of separating your pages/selectors fro
 
 1. Open the 'Style Guide' page in your browser for reference.
 - In your editor, open the 'phantom-styleguide.js' file.
-- In that file, directly after 'Tests go here' comment, add the line to start CasperJS by using `casper.start(‘http://localhost:8080/style-guide.html)`.
+- In that file, directly after 'Tests go here' comment, add the line to start CasperJS by using `casper.start('http://localhost:8080/style-guide.html')`.
 - In a new `.then` callback, add a call to the `phantomcss.screenshot` function to capture a screenshot of the page breadcrumbs. You'll want to pass in the selector used by the breadcrumb container.
 - In another new `.then` callback, add another call to the `phantomcss.screenshot` function, this time passing in the selector for the primary navigation.
 - In another new `.then` callback, run the `phantomcss.compareAll()` function to have phantom compare our screenshots.
