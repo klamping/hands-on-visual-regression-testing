@@ -19,4 +19,4 @@ gemini.suite('form actions', function(suite) {
 
 Run your tests and view your output. You should see a new folder titled `form actions` and two screenshots, once that’s plain and one with the text you defined.
 
-Take some time to read through [the full tests documentation](https://github.com/bem/gemini/blob/master/doc/tests.md) to discover all Gemini has beneath the hood.
+Take some time to read through [the full tests documentation: https://github.com/bem/gemini/blob/master/doc/tests.md to discover all Gemini has beneath the hood.
