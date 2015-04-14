@@ -33,7 +33,7 @@ Gemini is built to run via either a Selenium or a PhantomJS server. Since settin
 
 Run this command from inside a terminal window:
 ```
-phantomjs —webdriver=4444
+phantomjs --webdriver=4444
 ```
 
 If done correctly, it should output:
@@ -55,6 +55,7 @@ gemini.suite('style-guide', function(suite) {
     suite.setUrl('/style-guide.html')
         .setCaptureElements(['.site-header', '.site-branding'])
         .capture('plain');
+});
 ```
 
 This tells Gemini to go to the style guide url (based on the root url defined earlier). Then it defined the elements to capture screenshots of. Notice how we can list multiple elements.
@@ -85,4 +86,4 @@ While that default reporter is nice, the HTML reporter works better for me. To u
 
 `gemini test --reporter html styleguide.js`
 
-The open the `gemini-reporter/index.html` file in a browser for a better overview of the changes. This makes it much easier to go through your results when you have several individual tests.
+The open the `gemini-report/index.html` file in a browser for a better overview of the changes. This makes it much easier to go through your results when you have several individual tests.
