@@ -3,7 +3,7 @@
 You can do more with Gemini than just hover over links. Since Gemini ties in to the browser, it can take browser based actions. 
 
 Create a new file called ‘form.js’. In it, define your Gemini tests:
-‘test’ 
+
 ```
 var gemini = require('gemini');
 
