@@ -1,4 +1,4 @@
-# Wraith Intro
+# Wraith Intro and Installation
 
 [Wraith is a responsive screenshot comparison tool](http://bbc-news.github.io/wraith/index.html). It requires Ruby, Node and PhantomJS.
 

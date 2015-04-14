@@ -2,7 +2,7 @@
 
 This workshop only covered a few tools for UI regression testing. There are many more out there; check out the [http://csste.st tools page](http://csste.st/tools/) for a much more complete list.
 
-[A simple Google search for `CSS regression testing`](http://lmgtfy.com/?q=css+regression+testing) will bring up a wealth of articles and tools to help you along your way.
+[A simple Google search for `CSS regression testing`](http://lmgtfy.com/?q=css+regression+testing) will bring up a wealth of [articles](http://www.smashingmagazine.com/2015/03/05/automating-style-guide-driven-development/) and tools to help you along your way.
 
 The right tool for the job will depend greatly on your specific needs. Are you working on a large website or a small one? Is there a lot of JavaScript interactivity, or is the site mostly static? Think about these things, and how the tool your looking at handles them, before committing to a specific toolset. But don't be afraid to just try something out and see if it's worth it.
 
