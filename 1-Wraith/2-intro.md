@@ -32,8 +32,8 @@ Step 3:
 
 ```
 domains:
-    local: “http://localhost:8080”
-    production: “http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro-Sass”
+    local: "http://localhost:8080"
+    production: "http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro"
 ```
 
 Step 4:
@@ -43,10 +43,8 @@ paths:
   home: /
   sidebar_left: /layout-sidebar-left.html
   sidebar_right: /layout-sidebar-right.html
-  three_col: /layout-two-sidebars.html
   full_width: /layout-full-width.html
   audio_video: /layout-transcript.html
   sample_form: /layout-form.html
   styleguide: /style-guide.html
-  addons: /add-ons.html
 ```

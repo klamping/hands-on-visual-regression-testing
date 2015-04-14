@@ -10,7 +10,7 @@ To install the codebase, either clone the git repository by running `git clone h
 
 ## Install the dependencies
 
-There a few dependencies the node server needs to run. Install them by running `nom install`.
+There a few dependencies the node server needs to run. Install them by running `npm install`.
 
 ## Run the server
 
