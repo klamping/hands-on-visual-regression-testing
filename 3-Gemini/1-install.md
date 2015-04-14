@@ -13,7 +13,7 @@ npm install -g gemini
 and then in your project directory
 
 ```
-npm install -g gemini
+npm install gemini
 ```
 
 ## Setting up your config
