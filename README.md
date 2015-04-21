@@ -4,9 +4,9 @@ Built with [bitbooks](http://bitbooks.cc).
 
 ## Contributions are Welcome!
 
-While I’ve put a lot of effort trying to polish everything up, there will inevitably be mistakes or things that could be explained more clearly. I would love any and all help/suggestions.
+While I've put a lot of effort trying to polish everything up, there will inevitably be mistakes or things that could be explained more clearly. I would love any and all help/suggestions.
 
-If you see a tool that isn’t covered here, feel free to [open it up as an issue](https://github.com/klamping/hands-on-visual-regression-testing/issues) or, even better, [submit a pull request](https://github.com/klamping/hands-on-visual-regression-testing/pulls)!
+If you see a tool that isn't covered here, feel free to [open it up as an issue](https://github.com/klamping/hands-on-visual-regression-testing/issues) or, even better, [submit a pull request](https://github.com/klamping/hands-on-visual-regression-testing/pulls)!
 
 ## Re-Use Welcome
 

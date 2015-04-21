@@ -1,10 +1,10 @@
 # Narrowing Down Your Selections
 
-I love recommending Wraith as a starting tool for regression testing as it’s so easy to set up and use. The config file layout is simple to understand and the output of the gallery helps visualize differences.
+I love recommending Wraith as a starting tool for regression testing as it's so easy to set up and use. The config file layout is simple to understand and the output of the gallery helps visualize differences.
 
-That said, one of the drawbacks with the simplicity of Wraith is the fact that it takes screenshots of the entire page. Thankfully, there’s a configuration option to avoid this.
+That said, one of the drawbacks with the simplicity of Wraith is the fact that it takes screenshots of the entire page. Thankfully, there's a configuration option to avoid this.
 
-Let’s try out adding some selectors to our config file.
+Let's try out adding some selectors to our config file.
 
 ## Assignment
 

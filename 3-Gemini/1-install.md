@@ -1,6 +1,6 @@
 # Starting with Gemini
 
-Gemini is yet another visual regression tool and is quickly becoming my favorite. It’s adaptable (runs via both PhantomJS and Selenium), has very nice documentation, and is built entirely in NodeJS.
+Gemini is yet another visual regression tool and is quickly becoming my favorite. It's adaptable (runs via both PhantomJS and Selenium), has very nice documentation, and is built entirely in NodeJS.
 
 Installation is also pretty simple, assuming you have Node and PhantomJS installed.
 
@@ -18,18 +18,18 @@ npm install gemini
 
 ## Setting up your config
 
-Similar to Wraith, Gemini requires its own config file. Thankfully it’s not much.
+Similar to Wraith, Gemini requires its own config file. Thankfully it's not much.
 
 To get started, create a `.gemini.yml` file that contains just this:
 ```
 rootUrl: http://localhost:8080/
 ```
 
-Update the root url as you need, but that’s all the config needs for our setup.
+Update the root url as you need, but that's all the config needs for our setup.
 
 ## Start a local phantom server
 
-Gemini is built to run via either a Selenium or a PhantomJS server. Since setting up a Selenium server is more complicated, we’ll just use Phantom.
+Gemini is built to run via either a Selenium or a PhantomJS server. Since setting up a Selenium server is more complicated, we'll just use Phantom.
 
 Run this command from inside a terminal window:
 ```
@@ -64,15 +64,15 @@ The last bit tells Gemini to run a simple capture of those elements.
 
 ## Gather your baseline
 
-Now that you have your tests, it’s time to gather your baseline. Save your test file as something like `styleguide.js`, then run your screenshot gather referencing that file:
+Now that you have your tests, it's time to gather your baseline. Save your test file as something like `styleguide.js`, then run your screenshot gather referencing that file:
 
 `gemini gather styleguide.js`
 
-You can see your screenshots in the ‘gemini’ folder in your project. Notice how despite two selectors being defined, it’s a single image. That’s because Gemini will capture whatever is needed in order to get both elements in the picture. 
+You can see your screenshots in the ‘gemini' folder in your project. Notice how despite two selectors being defined, it's a single image. That's because Gemini will capture whatever is needed in order to get both elements in the picture. 
 
 ## Run your validation
 
-Now that you’ve got your baseline, lets see if we can make out tests pass. Run the validation via:
+Now that you've got your baseline, lets see if we can make out tests pass. Run the validation via:
 
 `gemini test styleguide.js`
 

@@ -2,7 +2,7 @@
 
 While Wraith is simple to set up, it can be limited in its functionality. Sure, you can write some functionality in your snap.js file, but that gets messy quickly. Should you have multiple snap files? That would mean multiple config files as well.
 
-Man, that’s a lot of duplicate code…
+Man, that's a lot of duplicate code…
 
 PhantomCSS offers an alternative. Instead of separating your pages/selectors from your functionality, you mix them all together. It's a little more work, but can be very helpful in the long run.
 
