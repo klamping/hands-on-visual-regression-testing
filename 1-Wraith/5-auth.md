@@ -10,15 +10,15 @@ Well there's hope. Wraith allows you to send headers and cookies in order to tes
 
 ## Assignment
 
-1. Add a ‘security' flag to all of your urls by appending `?secure=true` to each of them.
-2. Validate you are no longer able to use the site by trying to load one of these urls (message of ‘Please authenticate' should display on load).
+1. Add a 'security' flag to all of your urls by appending `?secure=true` to each of them.
+2. Validate you are no longer able to use the site by trying to load one of these urls (message of 'Please authenticate' should display on load).
 3. In your favorite editor, open `javascript/snap.js`.
 4. Review the comments starting on line 24.
 5. Add the following code to provide the correct authentication details for your site:
 
   ```
   page.customHeaders = {
-      ‘x-auth-token': ‘AUTHENTICATE!'
+      'x-auth-token': 'AUTHENTICATE!'
   };
   ```
 

@@ -5,7 +5,7 @@ Let's look at how to configure and run Wraith to capture page screenshots. We wo
 ## Assignment
 
 1. In your responsive starter kit folder, initialize Wraith by running `wraith setup` from a terminal window.
-2. Open ‘configs/config.yaml' in your editor of choice.
+2. Open 'configs/config.yaml' in your editor of choice.
 3. Update the `domains` section to point to your local server and the live site: [http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro](http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro). (See [spoilers section](#spoilers) for hints).
 4. Update the `paths` section to include each page. (Again, see the [spoilers section](#spoilers) below for all the paths).
 5. Run Wraith via `wraith capture config`.

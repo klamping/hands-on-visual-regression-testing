@@ -17,7 +17,7 @@ Make the following alterations to the design (run Wraith after each change, noti
 
 ## Extra Credit
 
-As an alternative to comparing two different URLs, you can set up Wraith to run in [‘History' mode](http://bbc-news.github.io/wraith/index.html#HistoryMode), where a single URL is compared against itself over multiple runs. Try running the previous changes in history mode on your local server.
+As an alternative to comparing two different URLs, you can set up Wraith to run in ['History' mode](http://bbc-news.github.io/wraith/index.html#HistoryMode), where a single URL is compared against itself over multiple runs. Try running the previous changes in history mode on your local server.
 
 ## Conclusion
 

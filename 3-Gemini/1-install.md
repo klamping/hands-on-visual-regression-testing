@@ -68,7 +68,7 @@ Now that you have your tests, it's time to gather your baseline. Save your test 
 
 `gemini gather styleguide.js`
 
-You can see your screenshots in the ‘gemini' folder in your project. Notice how despite two selectors being defined, it's a single image. That's because Gemini will capture whatever is needed in order to get both elements in the picture. 
+You can see your screenshots in the 'gemini' folder in your project. Notice how despite two selectors being defined, it's a single image. That's because Gemini will capture whatever is needed in order to get both elements in the picture. 
 
 ## Run your validation
 
@@ -86,4 +86,4 @@ While that default reporter is nice, the HTML reporter works better for me. To u
 
 `gemini test --reporter html styleguide.js`
 
-The open the `gemini-report/index.html` file in a browser for a better overview of the changes. This makes it much easier to go through your results when you have several individual tests.
+Then open the `gemini-report/index.html` file in a browser for a better overview of the changes. This makes it much easier to go through your results when you have several individual tests.
