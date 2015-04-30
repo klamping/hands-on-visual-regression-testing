@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Project workflows with DiffUX | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="../themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="../themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x4-DiffUX x4-DiffUX_1-intro epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="../">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>Project workflows with DiffUX</h1>
+
+<p>Almost all of us work on teams at some point in time. Having a good workflow is crucial to keeping production going.</p>
+
+<p>DiffUX provides a way to create an approval process for style changes. For example, if you have another developer making a small style tweak to the site, you can approve or reject the difference from DiffUX.</p>
+
+<h2>Goal</h2>
+
+<p>Understand how UI regression testing can work as part of a project workflow.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="https://github.com/diffux/diffux">https://github.com/diffux/diffux</a></li>
+<li><a href="http://causes.github.io/blog/2014/02/19/visual-diffs-with-diffux/">http://causes.github.io/blog/2014/02/19/visual-diffs-with-diffux/</a></li>
+</ul>
+
+<h2>Exercise</h2>
+
+<ol>
+<li>If you haven&rsquo;t already, start the local node server with <code>node index.js</code></li>
+<li>Start the DiffUX server (take each action in a separate command line window/tab)
+
+<ul>
+<li>Start redis - <code>redis-server</code></li>
+<li>Start the Ruby server - <code>bundle exec rails s</code></li>
+<li>Start sidekiq - <code>bundle exec sidekiq</code></li>
+</ul></li>
+<li>In a browser, open up DiffUX at <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>Click the &lsquo;Add New Project&rsquo; button
+
+<ul>
+<li>Name it</li>
+<li>Leave dimensions as is</li>
+<li>Add in URLs for the pages</li>
+<li>Create the project</li>
+</ul></li>
+<li>Start a sweep</li>
+<li>Grab something to drink while the sweep runs</li>
+<li>After the sweep has been completed, validate all images are as expected and accept them</li>
+</ol>
+
+<h3>Part 2 - Validating Changes</h3>
+
+<ol>
+<li>In the theme styles, change the default color of &lsquo;strong&rsquo; tags to be <code>#036</code></li>
+<li>Trigger a second sweep with your changes</li>
+<li>After the sweep completes, see if DiffUX caught your changes.
+
+<ul>
+<li>Notice how DiffUX automatically approves any pages without changes on them</li>
+<li>Where there any unwanted color changes? (Hint: the alert box colors shouldn&rsquo;t have changed)</li>
+</ul></li>
+</ol>
+
+<h2>Extra Credit</h2>
+
+<p>DiffUX allows you to <a href="https://github.com/diffux/diffux#triggering-sweeps">trigger sweeps via an API call</a>, allowing you to integrate sweeps with a tool like <a href="http://jenkins-ci.org/">Jenkins</a> or <a href="https://travis-ci.org/">TravisCI</a> (or even <a href="http://githooks.com/">git hooks</a>). You can also make this call via the command line. Using the command line, or a tool like <a href="http://www.getpostman.com/">Postman</a>, trigger a sweep of the site.</p>
+
+<h2>Spoilers</h2>
+
+<h3>Part 1 - Step 5</h3>
+<pre class="highlight plaintext">http://localhost:8080/
+http://localhost:8080/add-ons.html
+http://localhost:8080/layout-form.html
+http://localhost:8080/layout-full-width.html
+http://localhost:8080/layout-sidebar-left.html
+http://localhost:8080/layout-sidebar-right.html
+http://localhost:8080/layout-transcript.html
+http://localhost:8080/layout-two-sidebars.html
+http://localhost:8080/style-guide.html
+</pre>
+
+<h3>Part 2 - Step 1</h3>
+<pre class="highlight plaintext">strong {
+    color: #036;
+}
+</pre>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="../3-Gemini/3-forms.html">Previous</a></li>
+                <li><a class="next" href="../Z-Conclusion.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="../">Introduction</a></li><li class='child '><a href="../0-1-prereqs.html">Before you start</a></li><li class='child '><a href="../0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="../1-Wraith/1-install.html">Wraith Intro and Installation</a></li><li class='child '><a href="../1-Wraith/2-intro.html">Wraith Basics</a></li><li class='child '><a href="../1-Wraith/3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="../1-Wraith/4-selectors.html">Narrowing Down Your Selections</a></li><li class='child '><a href="../1-Wraith/5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child '><a href="../2-PhantomCSS/1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="../2-PhantomCSS/2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child '><a href="../3-Gemini/1-install.html">Starting with Gemini</a></li><li class='child '><a href="../3-Gemini/2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="../3-Gemini/3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child active'><a href="1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="../Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>

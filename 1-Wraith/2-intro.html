@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Wraith Basics | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="../themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="../themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x1-Wraith x1-Wraith_2-intro epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="../">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>Wraith Basics</h1>
+
+<p>Let&rsquo;s look at how to configure and run Wraith to capture page screenshots. We won&rsquo;t be doing any style editing yet. We want to validate that we can get Wraith running first.</p>
+
+<h2>Assignment</h2>
+
+<ol>
+<li>In your responsive starter kit folder, initialize Wraith by running <code>wraith setup</code> from a terminal window.</li>
+<li>Open &lsquo;configs/config.yaml&rsquo; in your editor of choice.</li>
+<li>Update the <code>domains</code> section to point to your local server and the live site: <a href="http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro">http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro</a>. (See <a href="#spoilers">spoilers section</a> for hints).</li>
+<li>Update the <code>paths</code> section to include each page. (Again, see the <a href="#spoilers">spoilers section</a> below for all the paths).</li>
+<li>Run Wraith via <code>wraith capture config</code>.</li>
+<li>View gallery output by running <code>open shots/gallery.html</code> (or open via your browser of choice).</li>
+<li>Find any differences between the two sites. There should only be one.</li>
+</ol>
+
+<h3>Extra Credit</h3>
+
+<p>If you don&rsquo;t want to see pages that didn&rsquo;t have any differences, <a href="https://github.com/BBC-News/wraith/blob/master/configs/config.yaml#L37">you can change the <code>diff mode</code> via your config file</a>. </p>
+
+<p>Try this by adding <code>mode: diffs_only</code> to the bottom of your config.yaml file and running Wraith again. Your gallery should be much simpler now.</p>
+
+<h2>Conclusion</h2>
+
+<p>Wraith&rsquo;s biggest strength is its ease of setup and configuration for quick validation of changes. As you should have noticed, it caught one regression between the local and live site (the image on the style guide is randomized on our local setup).</p>
+
+<p>In the next exercise, we&rsquo;ll try making some changes to our styles and see how well Wraith works out.</p>
+
+<h2>Spoilers</h2>
+
+<p>If you&rsquo;re stuck trying to get the code working, here are some solutions:</p>
+
+<p>Step 3:</p>
+<pre class="highlight plaintext">domains:
+    local: "http://localhost:8080"
+    production: "http://mpgilbertusa.github.io/Responsive-Starter-Kit-Pro"
+</pre>
+
+<p>Step 4:</p>
+<pre class="highlight plaintext">paths:
+  home: /
+  sidebar_left: /layout-sidebar-left.html
+  sidebar_right: /layout-sidebar-right.html
+  three_col: /layout-two-sidebars.html
+  full_width: /layout-full-width.html
+  audio_video: /layout-transcript.html
+  sample_form: /layout-form.html
+  styleguide: /style-guide.html
+  addons: /add-ons.html
+</pre>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="1-install.html">Previous</a></li>
+                <li><a class="next" href="3-validation.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="../">Introduction</a></li><li class='child '><a href="../0-1-prereqs.html">Before you start</a></li><li class='child '><a href="../0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="1-install.html">Wraith Intro and Installation</a></li><li class='child active'><a href="2-intro.html">Wraith Basics</a></li><li class='child '><a href="3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="4-selectors.html">Narrowing Down Your Selections</a></li><li class='child '><a href="5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child '><a href="../2-PhantomCSS/1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="../2-PhantomCSS/2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child '><a href="../3-Gemini/1-install.html">Starting with Gemini</a></li><li class='child '><a href="../3-Gemini/2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="../3-Gemini/3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child '><a href="../4-DiffUX/1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="../Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>

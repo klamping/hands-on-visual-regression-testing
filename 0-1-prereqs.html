@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Before you start | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x0-1-prereqs epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="./">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>Before you start</h1>
+
+<p>Before getting started, there a few items to note.</p>
+
+<h2>Expected technical skills</h2>
+
+<p>Not to scare you away, but the following skills are assumed:</p>
+
+<ul>
+<li>Basic understanding of the command line</li>
+<li>Intermediate understanding of CSS/SASS</li>
+<li>Intermediate understanding of JavaScript</li>
+</ul>
+
+<p>You can complete the exercises without these skills, but you may need to do a little extra research to fill in the details.</p>
+
+<h2>Computer setup</h2>
+
+<p>You will need to install some pre-requisites that the regression testing tools use. They are:</p>
+
+<h3>The things the tools need to run:</h3>
+
+<h4>Ruby</h4>
+
+<p>I recommend using <a href="http://rvm.io/rvm/install">RVM</a> or <a href="https://github.com/sstephenson/rbenv#installation">RBENV</a> to easily manage Ruby installs. This helps with differences between the require version of Ruby between Wraith and DiffUX.</p>
+
+<p>To check your version, open a command line and enter <code>ruby -v</code>. This will output the current version of Ruby you have running.</p>
+
+<p>If it doesn&rsquo;t match what you want, never fear. If you&rsquo;re using RVM, <a href="http://cheat.errtheblog.com/s/rvm">you can install and use a different version fairly easily</a>. <a href="https://github.com/sstephenson/rbenv#installing-ruby-versions">RBENV should manage this for you</a>.</p>
+
+<h4>Node</h4>
+
+<p>I recommend using <a href="https://github.com/creationix/nvm">NVM for Node</a>. You can <a href="https://nodejs.org/">install Node manually</a>, but <a href="https://github.com/creationix/nvm#usage">NVM makes managing different versions much simpler</a>.</p>
+
+<h4>Other Stuff</h4>
+
+<ul>
+<li><a href="http://www.imagemagick.org/">ImageMagick</a>. Install via Homebrew: <code>brew install imagemagick</code> or via NPM (<code>npm install -g imagemagick</code>)</li>
+<li><a href="http://phantomjs.org/">PhantomJS</a>. Install via Homebrew (<code>brew install phantomjs</code>) or via NPM (<code>npm install -g phantomjs</code>)</li>
+<li><a href="http://docs.casperjs.org/en/latest/installation.html">CasperJS</a> Install via Homebrew <code>brew install casperjs</code> or via NPM (<code>npm install -g casperjs</code>)</li>
+</ul>
+
+<h3>Having Installation Troubles?</h3>
+
+<p>You can use the <a href="https://github.com/thoughtbot/laptop">thoughtbot/laptop repo</a> to help with dependency installation. It is an install script that takes care of everything you need besides  phantom/casper and the tools themselves.</p>
+
+<h4>PG gem install issues?</h4>
+
+<p>Check out <a href="http://stackoverflow.com/questions/19262312/installing-pg-gem-failure-to-build-native-extension/19620569#19620569">this Stack Overflow question</a>.</p>
+
+<h4>Try it on a virtual machine</h4>
+
+<p>Sometimes we customize our machines a little too much, or end up with an out of date dependency that just won&rsquo;t upgrade, causing installation frustration and dependency nightmares. If you&rsquo;re faced with a situation like this, you can try working off of a virtual machine using a tool like <a href="https://www.vagrantup.com/">Vagrant</a>. This tutorial doesn&rsquo;t go in to detail on how to do that though.</p>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="./">Previous</a></li>
+                <li><a class="next" href="0-2-server.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="./">Introduction</a></li><li class='child active'><a href="0-1-prereqs.html">Before you start</a></li><li class='child '><a href="0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="1-Wraith/1-install.html">Wraith Intro and Installation</a></li><li class='child '><a href="1-Wraith/2-intro.html">Wraith Basics</a></li><li class='child '><a href="1-Wraith/3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="1-Wraith/4-selectors.html">Narrowing Down Your Selections</a></li><li class='child '><a href="1-Wraith/5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child '><a href="2-PhantomCSS/1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="2-PhantomCSS/2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child '><a href="3-Gemini/1-install.html">Starting with Gemini</a></li><li class='child '><a href="3-Gemini/2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="3-Gemini/3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child '><a href="4-DiffUX/1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>

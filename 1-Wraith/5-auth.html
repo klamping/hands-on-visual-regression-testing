@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Testing Sites That Require Authentication in Wraith | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="../themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="../themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x1-Wraith x1-Wraith_5-auth epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="../">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>Testing Sites That Require Authentication in Wraith</h1>
+
+<p>Many websites secure their content behind login/authentication mechanisms. Nothing bursts your bubble like discovering that your favorite new visual regression testing tool is useless due to a simple login screen.</p>
+
+<p>Well there&rsquo;s hope. Wraith allows you to send headers and cookies in order to test sites that require authentication. You can also get in to the weeds with browser automation using PhantomJS. How exciting.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="https://github.com/BBC-News/wraith/blob/master/templates/javascript/snap.js">https://github.com/BBC-News/wraith/blob/master/templates/javascript/snap.js</a></li>
+<li><a href="http://phantomjs.org/page-automation.html">http://phantomjs.org/page-automation.html</a></li>
+</ul>
+
+<h2>Assignment</h2>
+
+<ol>
+<li>Add a &lsquo;security&rsquo; flag to all of your urls by appending <code>?secure=true</code> to each of them.</li>
+<li>Validate you are no longer able to use the site by trying to load one of these urls (message of &lsquo;Please authenticate&rsquo; should display on load).</li>
+<li>In your favorite editor, open <code>javascript/snap.js</code>.</li>
+<li>Review the comments starting on line 24.</li>
+<li>Add the following code to provide the correct authentication details for your site:</li>
+</ol>
+<pre class="highlight plaintext">  page.customHeaders = {
+      'x-auth-token': 'AUTHENTICATE!'
+  };
+</pre>
+
+<ol>
+<li>Run <code>wraith capture config</code> and validate it was able to access the site as normal.</li>
+</ol>
+
+<h3>Extra Credit</h3>
+
+<p>The <code>snap.js</code> file is run by <a href="http://phantomjs.org/">PhantomJS</a>, a browser that allows you to easily script commands. In fact, <code>page.render</code> (<a href="http://phantomjs.org/screen-capture.html">the command that captures the screenshot</a>) is built-in to PhantomJS.</p>
+
+<p>With PhantomJS, you can do all sorts of <a href="http://phantomjs.org/page-automation.html">page automation</a>. Try adding code to hide the styleguide&rsquo;s randomized image before every snapshot. This will help weed out false positives (especially applicable when serving ads on a site). When you run Wraith now, both sites should ignore the image in their screenshot.</p>
+
+<p>If that&rsquo;s not enough, check out the following integrations that can help take Wraith usage even further:</p>
+
+<ul>
+<li><a href="https://github.com/andrewccadman/wraith-selenium">https://github.com/andrewccadman/wraith-selenium</a></li>
+<li><a href="http://blog.kevinlamping.com/easy-ui-regression-testing-with-wraith-and-travisci/">Integrating Wraith and TravisCI</a></li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>What header details you send will depend on the authentication setting of the site your testing. You may not even need to send a header, but instead a cookie with an authentication token. Wraith also allows for this (as you make have read in the comments).</p>
+
+<p>The <code>snap.js</code> file is a script that&rsquo;s run through PhantomJS, so anything you can do via PhantomJS, you can do in the <code>snap.js</code> file. <a href="http://phantomjs.org/page-automation.html">Read the docs</a> for more information.</p>
+
+<p>Aside from setting up authentication, you can also automate some browser functionality. For example, if your page requires a JavaScript framework to load, you can wait for an event to fire before running the tests. If there are certain page actions to take (e.g. clicking a tab) before snapping a screenshot, you can also program that in.</p>
+
+<p>While technically this is all possible in Wraith, if you&rsquo;re needing some sort of browser control, other tools are likely a better bet (e.g. PhantomCSS and Gemini).</p>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="4-selectors.html">Previous</a></li>
+                <li><a class="next" href="../2-PhantomCSS/1-intro.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="../">Introduction</a></li><li class='child '><a href="../0-1-prereqs.html">Before you start</a></li><li class='child '><a href="../0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="1-install.html">Wraith Intro and Installation</a></li><li class='child '><a href="2-intro.html">Wraith Basics</a></li><li class='child '><a href="3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="4-selectors.html">Narrowing Down Your Selections</a></li><li class='child active'><a href="5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child '><a href="../2-PhantomCSS/1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="../2-PhantomCSS/2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child '><a href="../3-Gemini/1-install.html">Starting with Gemini</a></li><li class='child '><a href="../3-Gemini/2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="../3-Gemini/3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child '><a href="../4-DiffUX/1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="../Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>

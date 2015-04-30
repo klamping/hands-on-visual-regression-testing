@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PhantomCSS Basics | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="../themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="../themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x2-PhantomCSS x2-PhantomCSS_1-intro epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="../">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>PhantomCSS Basics</h1>
+
+<p>While Wraith is simple to set up, it can be limited in its functionality. Sure, you can write some functionality in your snap.js file, but that gets messy quickly. Should you have multiple snap files? That would mean multiple config files as well.</p>
+
+<p>Man, that&rsquo;s a lot of duplicate code…</p>
+
+<p>PhantomCSS offers an alternative. Instead of separating your pages/selectors from your functionality, you mix them all together. It&rsquo;s a little more work, but can be very helpful in the long run.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="http://tldr.huddle.com/blog/css-testing/">http://tldr.huddle.com/blog/css-testing/</a></li>
+<li><a href="http://www.phase2technology.com/blog/css-testing-with-phantomcss-phantomjs-casperjs-and-grunt/">http://www.phase2technology.com/blog/css-testing-with-phantomcss-phantomjs-casperjs-and-grunt/</a></li>
+<li><a href="https://github.com/Huddle/PhantomCSS#getting-started-try-the-demo">https://github.com/Huddle/PhantomCSS#getting-started-try-the-demo</a></li>
+</ul>
+
+<h2>Assignment</h2>
+
+<ol>
+<li>Open the &lsquo;Style Guide&rsquo; page in your browser for reference.</li>
+<li>In your editor, open the &lsquo;phantom-styleguide.js&rsquo; file.</li>
+<li>In that file, directly after &lsquo;Tests go here&rsquo; comment, add the line to start CasperJS by using <code>casper.start(&#39;http://localhost:8080/style-guide.html&#39;)</code>.</li>
+<li>In a new <code>.then</code> callback, add a call to the <code>phantomcss.screenshot</code> function to capture a screenshot of the page breadcrumbs. You&rsquo;ll want to pass in the selector used by the breadcrumb container.</li>
+<li>In another new <code>.then</code> callback, add another call to the <code>phantomcss.screenshot</code> function, this time passing in the selector for the primary navigation.</li>
+<li>In another new <code>.then</code> callback, run the <code>phantomcss.compareAll()</code> function to have phantom compare our screenshots.</li>
+<li>In the command line, create a baseline set of screenshots by running <code>casperjs test phantom-styleguide.js</code>. It should mention something about being your first time running the tests. Validate it captured the image correctly by viewing the captures in the &lsquo;ex-3-screenshots&rsquo; folder.</li>
+<li>Run the same command again. This time PhantomCSS will compare against the previously created screenshots. It shouldn&rsquo;t report any failures.</li>
+<li>In the global styles (<code>main.css</code> or <code>_common.scss</code>), set the text-decoration for all links from &lsquo;underline&rsquo; to &lsquo;none&rsquo;.</li>
+<li>Run the command one more time. It should now report a failure.</li>
+<li>Open the image diff added to the newly created &lsquo;ex-3-failures/&rsquo; folder. Validate that the difference is shown. (You can also see the new capture in the existing &lsquo;ex-3-screenshots&rsquo; folder).</li>
+<li>To accept the changes, delete your &lsquo;ex-3-failures&rsquo; and &lsquo;ex-3-screenshots&rsquo; folder, and re-run the scan (note: there may be a better way to do this).</li>
+</ol>
+
+<h3>Extra Credit</h3>
+
+<p>Using a CSS selector isn&rsquo;t the only way to tell PhantomCSS where to take a screenshot. You can also <a href="https://github.com/Huddle/PhantomCSS#there-are-different-ways-to-take-a-screenshot">use coordinates to give an area to capture</a>. Try taking a screenshot of the header and the breadcrumbs combined by passing in coordinates to the <code>screenshot</code> function.</p>
+
+<h2>Conclusion</h2>
+
+<p>While it does take more effort to write the tests than Wraith, it provides you with a much finer-grain validation method. With PhantomCSS, changes to one component&rsquo;s size likely won&rsquo;t cause the type of cascading validation issues seen with full-page screenshots.</p>
+
+<p>In the next exercise, we&rsquo;ll look at how we can script the browser to run certain actions before taking a screenshot, allowing us to get to &ldquo;hidden&rdquo; parts of the page for testing.</p>
+
+<h2>Spoilers</h2>
+
+<h3>Step 4</h3>
+<pre class="highlight plaintext">casper.then(function () {
+    phantomcss.screenshot('.nav-breadcrumb', 'Page Breadcrumbs');
+});
+</pre>
+
+<h3>Step 5</h3>
+<pre class="highlight plaintext">casper.then(function () {
+    phantomcss.screenshot('.nav-primary', 'Page Primary Navigation');
+});
+</pre>
+
+<h3>Step 6</h3>
+<pre class="highlight plaintext">casper.then(function(){
+    phantomcss.compareAll();
+});
+</pre>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="../1-Wraith/5-auth.html">Previous</a></li>
+                <li><a class="next" href="2-advanced.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="../">Introduction</a></li><li class='child '><a href="../0-1-prereqs.html">Before you start</a></li><li class='child '><a href="../0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="../1-Wraith/1-install.html">Wraith Intro and Installation</a></li><li class='child '><a href="../1-Wraith/2-intro.html">Wraith Basics</a></li><li class='child '><a href="../1-Wraith/3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="../1-Wraith/4-selectors.html">Narrowing Down Your Selections</a></li><li class='child '><a href="../1-Wraith/5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child active'><a href="1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child '><a href="../3-Gemini/1-install.html">Starting with Gemini</a></li><li class='child '><a href="../3-Gemini/2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="../3-Gemini/3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child '><a href="../4-DiffUX/1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="../Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>

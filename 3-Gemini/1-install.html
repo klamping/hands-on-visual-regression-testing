@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Starting with Gemini | Hands-on Visual Regression Testing</title>
+
+    <!-- Styles and fonts -->
+    <link href="../themes/epsilon/stylesheets/epsilon.css" rel="stylesheet" type="text/css" />
+    <link href="../themes/epsilon/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext,vietnamese' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <script src="../themes/epsilon/javascripts/modernizr.js" type="text/javascript"></script>
+  </head>
+
+  <body class="x3-Gemini x3-Gemini_1-install epsilon">
+    <div class="page-wrapper">
+
+      <a id="menu-toggle" class="menu-toggle" href="#sidr"><span class="bitcon-list"></span><span class="menu-toggle-text">Toggle Menu</span></a>
+      <header class="page-header" role="banner">
+<a class="invisilink" href="../">            <span class="book-title">Hands-on Visual Regression Testing</span>
+</a>        <span class="book-author">by Kevin Lamping</span>
+      </header>
+
+        <div class="content-wrapper clearfix">
+
+          <!--[if lt IE 7]>
+              <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <section class="main-content" role="main">
+            <div class="main-content-source">
+              <h1>Starting with Gemini</h1>
+
+<p>Gemini is yet another visual regression tool and is quickly becoming my favorite. It&rsquo;s adaptable (runs via both PhantomJS and Selenium), has very nice documentation, and is built entirely in NodeJS.</p>
+
+<p>Installation is also pretty simple, assuming you have Node and PhantomJS installed.</p>
+
+<h2>Installation</h2>
+<pre class="highlight plaintext">npm install -g gemini
+</pre>
+
+<p>and then in your project directory</p>
+<pre class="highlight plaintext">npm install gemini
+</pre>
+
+<h2>Setting up your config</h2>
+
+<p>Similar to Wraith, Gemini requires its own config file. Thankfully it&rsquo;s not much.</p>
+
+<p>To get started, create a <code>.gemini.yml</code> file that contains just this:
+<code>
+rootUrl: http://localhost:8080/
+</code></p>
+
+<p>Update the root url as you need, but that&rsquo;s all the config needs for our setup.</p>
+
+<h2>Start a local phantom server</h2>
+
+<p>Gemini is built to run via either a Selenium or a PhantomJS server. Since setting up a Selenium server is more complicated, we&rsquo;ll just use Phantom.</p>
+
+<p>Run this command from inside a terminal window:
+<code>
+phantomjs --webdriver=4444
+</code></p>
+
+<p>If done correctly, it should output:
+<code>
+PhantomJS is launching GhostDriver…
+[INFO  - 2015-04-14T02:23:37.939Z] GhostDriver - Main - running on port 4444
+</code></p>
+
+<h2>Write your first test</h2>
+
+<p>Now that you have your config and Phantom server running, you should write a test to run on it. </p>
+
+<p>In a new file, add the following:</p>
+<pre class="highlight plaintext">var gemini = require('gemini');
+
+gemini.suite('style-guide', function(suite) {
+    suite.setUrl('/style-guide.html')
+        .setCaptureElements(['.site-header', '.site-branding'])
+        .capture('plain');
+});
+</pre>
+
+<p>This tells Gemini to go to the style guide url (based on the root url defined earlier). Then it defined the elements to capture screenshots of. Notice how we can list multiple elements.</p>
+
+<p>The last bit tells Gemini to run a simple capture of those elements. </p>
+
+<h2>Gather your baseline</h2>
+
+<p>Now that you have your tests, it&rsquo;s time to gather your baseline. Save your test file as something like <code>styleguide.js</code>, then run your screenshot gather referencing that file:</p>
+
+<p><code>gemini gather styleguide.js</code></p>
+
+<p>You can see your screenshots in the &lsquo;gemini&rsquo; folder in your project. Notice how despite two selectors being defined, it&rsquo;s a single image. That&rsquo;s because Gemini will capture whatever is needed in order to get both elements in the picture. </p>
+
+<h2>Run your validation</h2>
+
+<p>Now that you&rsquo;ve got your baseline, lets see if we can make out tests pass. Run the validation via:</p>
+
+<p><code>gemini test styleguide.js</code></p>
+
+<p>Hopefully you see:</p>
+
+<p><code>Total: 1 Passed: 1 Failed: 0 Skipped: 0</code></p>
+
+<h2>Extra Credit</h2>
+
+<p>While that default reporter is nice, the HTML reporter works better for me. To use that, add <code>--reporter html</code> to your command: </p>
+
+<p><code>gemini test --reporter html styleguide.js</code></p>
+
+<p>Then open the <code>gemini-report/index.html</code> file in a browser for a better overview of the changes. This makes it much easier to go through your results when you have several individual tests.</p>
+
+            </div>
+            <nav class="main-content-nav clearfix" role="navigation">
+              <ul>
+                <li><a class="previous" href="../2-PhantomCSS/2-advanced.html">Previous</a></li>
+                <li><a class="next" href="2-actions.html">Next</a></li>
+              </ul>
+            </nav>
+          </section>
+
+          <aside id="sidr" class="aside-content" role="complementary">
+            <div class="aside-wrapper">
+
+              <div class="block table-of-contents">
+                <h3>Table of Contents</h3>
+                <nav role="navigation">
+                  <ul>
+                    <li class='child '><a href="../">Introduction</a></li><li class='child '><a href="../0-1-prereqs.html">Before you start</a></li><li class='child '><a href="../0-2-server.html">Get the sample website</a></li><li class='parent'><span class='parent-label'>1 Wraith</span><ul><li class='child '><a href="../1-Wraith/1-install.html">Wraith Intro and Installation</a></li><li class='child '><a href="../1-Wraith/2-intro.html">Wraith Basics</a></li><li class='child '><a href="../1-Wraith/3-validation.html">Validating Changes with Wraith</a></li><li class='child '><a href="../1-Wraith/4-selectors.html">Narrowing Down Your Selections</a></li><li class='child '><a href="../1-Wraith/5-auth.html">Testing Sites That Require Authentication in Wraith</a></li></ul></li><li class='parent'><span class='parent-label'>2 Phantom Css</span><ul><li class='child '><a href="../2-PhantomCSS/1-intro.html">PhantomCSS Basics</a></li><li class='child '><a href="../2-PhantomCSS/2-advanced.html">Automating Page Actions</a></li></ul></li><li class='parent'><span class='parent-label'>3 Gemini</span><ul><li class='child active'><a href="1-install.html">Starting with Gemini</a></li><li class='child '><a href="2-actions.html">Page Actions with Gemini</a></li><li class='child '><a href="3-forms.html">Testing Forms</a></li></ul></li><li class='parent'><span class='parent-label'>4 Diff Ux</span><ul><li class='child '><a href="../4-DiffUX/1-intro.html">Project workflows with DiffUX</a></li></ul></li><li class='child '><a href="../Z-Conclusion.html">Conclusion</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="block open-source">
+                <h3>This book is open source</h3>
+                <p>The source of this book is <a href="https://github.com/klamping/hands-on-visual-regression-testing">hosted on Github</a>. Go, ahead. Check it out.</p>
+              </div>
+
+              <!--
+              <div class="block downloads">
+                <h3>Downloads</h3>
+                <p>Download this book in
+                    <a href="#">PDF</a>, <a href="#">mobi</a>, and <a href="#">epub</a>
+                  form for free.
+                </p>
+              </div>
+
+              <div class="block translations">
+                <h3>Book translations</h3>
+                <p>This book is translated into
+                  <a href="#">Spanish</a>
+                  and <a href="#">English</a>.
+                  You can help with more translations <a href="https://github.com/klamping/hands-on-visual-regression-testing">on Github</a>.
+                </p>
+              </div>
+              -->
+
+              <div class="block license">
+                <h3>License</h3>
+                <p>This book is licensed under the <a href="http://opensource.org/licenses/MIT">MIT</a> license.</p>
+              </div>
+
+            </div><!-- end aside-wrapper -->
+          </aside>
+
+        </div><!-- end content-wrapper -->
+
+      <footer class="page-footer">
+        <div class="footer-wrapper">
+          <small class="small-text">Made with <a href="http://bitbooks.cc">Bitbooks</a></small>
+        </div><!-- end footer-wrapper -->
+      </footer>
+
+    </div><!-- end page-wrapper -->
+
+    <!-- include scripts just before the close of the body tag -->
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../themes/epsilon/javascripts/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/anchor.min.js" type="text/javascript"></script>
+    <script src="../themes/epsilon/javascripts/epsilon.js" type="text/javascript"></script>
+  </body>
+</html>
